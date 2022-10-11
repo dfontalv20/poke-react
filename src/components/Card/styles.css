@@ -1,0 +1,52 @@
+.card {
+    background: linear-gradient(160deg, rgb(174, 174, 238), rgb(188, 125, 218));
+    border-width: 7px;
+    border-style: solid;
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+}
+
+.card__image-container {
+    display: flex;
+    background: linear-gradient(to right, rgb(3, 3, 87), rgb(70, 0, 105));
+}
+
+.card__image {
+    height: 128px;
+    margin: auto;
+}
+
+.card__title {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    font-weight: 600;
+    font-family: consolas;
+    position: relative;
+    font-size: 20px;
+    left: 4%;
+    top: -16px;
+}
+
+
+
+.card__stat-container {
+    margin-block: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.card__stat-text {
+    font-size: large;
+    font-family: consolas;
+}
+
+.card__stat-name {
+    width: 50%;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.card__stat-value {
+    width: 50%;
+    padding-left: 5px;
+}
