@@ -1,4 +1,4 @@
-.card {
+.card__container {
     background: linear-gradient(160deg, rgb(174, 174, 238), rgb(188, 125, 218));
     border-width: 7px;
     border-style: solid;
@@ -36,7 +36,7 @@
 }
 
 .card__stat-text {
-    font-size: large;
+    font-size: medium;
     font-family: consolas;
 }
 

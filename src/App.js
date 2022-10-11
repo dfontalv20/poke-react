@@ -13,10 +13,10 @@ function App() {
   })
   const [pokemonList, setPokemonList] = useState([])
 
-  useEffect(() => {  
+  useEffect(() => {
     loadList()
   }, [])
-  
+
 
   const loadList = async () => {
     const list = await getPokemonList(paginatorURLs.current)
@@ -31,8 +31,14 @@ function App() {
   }
 
   return (
-    <div>
-      {pokemonList.map(pokemon => <PokemonCard pokemon={pokemon}/>)}
+    <div className='container'>
+      <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3'>
+        {pokemonList.map(pokemon =>
+          <div className='col'>
+            <PokemonCard pokemon={pokemon} />
+          </div>)
+        }
+      </div>
     </div>
   );
 }
