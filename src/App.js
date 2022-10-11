@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import PokemonCard from './components/Card/PokemonCard';
+import PokemonNavBar from './components/Navbar/PokemonNavBar';
 import { getPokemonData, getPokemonList } from './services/Pokemon.service';
 
 
@@ -15,7 +16,7 @@ function App() {
 
   useEffect(() => {
     loadList()
-  }, [])
+  }, [paginatorURLs.current])
 
 
   const loadList = async () => {
@@ -25,21 +26,31 @@ function App() {
     setPokemonList(pokemonsResponses.map(res => res.value))
     setPaginatorURLs({
       current: paginatorURLs.current,
-      next: paginatorURLs.next,
-      previous: paginatorURLs.previous
+      next: list.next,
+      previous: list.previous
     })
   }
 
   return (
-    <div className='container'>
-      <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3'>
-        {pokemonList.map(pokemon =>
-          <div className='col'>
-            <PokemonCard pokemon={pokemon} />
-          </div>)
-        }
+    <div className='background'>
+      <div className='container'>
+        <PokemonNavBar
+
+          showNext={paginatorURLs.next}
+          showPrevious={paginatorURLs.previous}
+          onNext={() => setPaginatorURLs(prev => ({ current: prev.next }))}
+          onPrevious={() => setPaginatorURLs(prev => ({ current: prev.previous }))}
+        />
+        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3'>
+          {pokemonList.map(pokemon =>
+            <div className='col'>
+              <PokemonCard pokemon={pokemon} />
+            </div>)
+          }
+        </div>
       </div>
     </div>
+
   );
 }
 
