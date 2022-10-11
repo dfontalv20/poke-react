@@ -21,7 +21,6 @@ function App() {
 
   const loadList = async () => {
     const list = await getPokemonList(paginatorURLs.current)
-    console.log(list);
     const pokemonsResponses = await Promise.allSettled(list.results.map(pokemon => getPokemonData(pokemon.name)))
     setPokemonList(pokemonsResponses.map(res => res.value))
     setPaginatorURLs({
@@ -42,8 +41,8 @@ function App() {
           onPrevious={() => setPaginatorURLs(prev => ({ current: prev.previous }))}
         />
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3'>
-          {pokemonList.map(pokemon =>
-            <div className='col'>
+          {pokemonList.map((pokemon, key) =>
+            <div className='col' key={key}>
               <PokemonCard pokemon={pokemon} />
             </div>)
           }

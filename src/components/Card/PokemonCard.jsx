@@ -12,7 +12,7 @@ const PokemonCard = ({ pokemon }) => {
         </div>
         <span className='card__title'>{pokemon.name}</span>
         <div className='card__description'>
-          {pokemon.stats.map(stat => <PokemonCardStat stat={stat}/>)}
+          {pokemon.stats.map((stat, key) => <PokemonCardStat stat={stat} key={key}/>)}
         </div>
       </div>
   )
